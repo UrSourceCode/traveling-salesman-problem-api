@@ -1,0 +1,32 @@
+from math import radians, cos, sin, asin, sqrt
+
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance in kilometers between two points
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a))
+    r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
+    return c * r
+
+
+class City:
+    def __init__(self, lon, lat, id):
+        self.lon = lon
+        self.lat = lat
+        self.id = id
+
+    def distance(self, city):
+        distance = haversine(self.lon, self.lat, city.lon, city.lat)
+        return distance
+
+    def __repr__(self):
+        return "(" + str(self.lon) + "," + str(self.lat) + ")"
