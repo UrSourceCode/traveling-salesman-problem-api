@@ -47,6 +47,3 @@ def do_tsp():
     print(output)
     return jsonify(output)
 
-
-if __name__ == '__main__':
-    app.run()
