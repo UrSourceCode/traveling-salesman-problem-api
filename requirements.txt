@@ -5,4 +5,4 @@ platformdirs==2.5.1
 six==1.16.0
 virtualenv==20.13.4
 flask==2.0.3
-flask-cors=3.0.10
+flask-cors==3.0.10
